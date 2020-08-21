@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="inputBx">
+        <h2>Password Generator App</h2>
+        <input type="number" placeholder="Length of Password" id="length" autocomplete="off">
+        <input type="text" placeholder="Password" id="password" autocomplete="off">
+        <div class="copy" id="copy" onclick="copy()"></div>
+        <button id="btn" onclick="generate()">Generate</button>
+    </div>
+    <div class="alert" id="alertBox">
+        <div class="info">
+            <img src="close.png" id="close">
+            <h1>New Password Copied!</h1>
+            <h1 id="copiedpass">Password</h1>
+        </div>
+    </div>
+    <script>
+        let passfield = document.getElementById('password')
+        function generate() {
+            let passwordlen = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890!@#$%^&*()-=+{}[]\|\|;:,.<>$%@%#^&$#%::;;,./?/`~';
+
+
+            let password = '';
+
+            for (let i = 0; i < passwordlen.length; i++) {
+                let randomnumber = Math.floor(Math.random() * passwordlen.length);
+
+                password += passwordlen.substring(randomnumber, randomnumber + 1);
+
+                let finalpass = password.substr(0, document.getElementById("length").value)
+
+                passfield.value = finalpass;
+            };
+        };
+
+        function copy() {
+            let passwordfield = document.getElementById('password');
+
+            password.select();
+
+            document.execCommand('copy');
+
+            let copiedpass = document.getElementById('copiedpass');
+
+            copiedpass.innerHTML = passfield.value;
+
+            document.getElementById('alertBox').style.transform = 'scale(1)';
+
+        };
+
+        let close = document.getElementById('close');
+        close.addEventListener('click', ()=>{
+            document.getElementById('alertBox').style.transform = 'scale(0)';
+        })
+
+    </script>
+</body>
+</html>
