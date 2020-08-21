@@ -1,5 +1,5 @@
 # random-password-generator
-This app generate's Strong random passwords.
+This app generate's random strong passwords.
 
 # Screenshots
 
